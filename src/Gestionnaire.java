@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 
 public class Gestionnaire {
-	private Concierge concierge;
+	private Concierge concierge = new Concierge();
 	private ArrayList<Bavard> bavards = new ArrayList<Bavard>();
 	
 	public void addBavard(Bavard b) {
