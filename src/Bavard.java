@@ -4,7 +4,10 @@ import java.util.ArrayList;
 public class Bavard implements PapotageListener{
 	private String nom;
 	private boolean connecte = false;
-	ArrayList<PapotageListener> ecouteurs = new ArrayList<PapotageListener>(); 
+	private FenetreDialog fenetreDialog = null;
+	private ArrayList<PapotageListener> ecouteurs = new ArrayList<PapotageListener>(); 
+	
+		
 	
 	public Bavard(String nom) {
 		super();
@@ -12,7 +15,7 @@ public class Bavard implements PapotageListener{
 	}
 	
 	
-	
+// getters et setters	
 	public boolean isConnecte() {
 		return connecte;
 	}
@@ -21,6 +24,13 @@ public class Bavard implements PapotageListener{
 		this.connecte = connecte;
 	}
 	
+	public FenetreDialog getFenetreDialog() {
+		return fenetreDialog;
+	}
+
+	public void setFenetreDialog(FenetreDialog fenetreDialog) {
+		this.fenetreDialog = fenetreDialog;
+	}
 	
 	
 // ajouter et supprimer des ecouteurs
