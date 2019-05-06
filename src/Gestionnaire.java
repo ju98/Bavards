@@ -22,7 +22,6 @@ public class Gestionnaire {
 
 // cree un nouveau bavard (avec comme listener le concierge), et l'ajoute a la liste des bavards
 	public Bavard createNewBavard(String nom) {
-		System.out.println("okCreateNewBavard1");
 		Bavard bavard = new Bavard(nom);
 		bavard.addPapotageListener(concierge);	
 		addBavard(bavard);

@@ -24,9 +24,10 @@ public class Concierge implements PapotageListener{
 		
 		for (PapotageListener elem:ecouteurs) {
 			elem.newPapotage(mess);
-			conciergeGUI.afficheMess(mess);
+			
 						
 		}
+		conciergeGUI.afficheMess(mess);
 
 	}
 

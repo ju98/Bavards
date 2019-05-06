@@ -26,7 +26,7 @@ public class FenetreConcierge extends JFrame  {
 	
 	public void afficheMess(PapotageEvent mess) {
 		
-		JLabel l = new JLabel(mess.getCorps());
+		JLabel l = new JLabel(mess.getSujet()+" : "+mess.getCorps());
 		conteneur.add(l, BorderLayout.SOUTH);
 		setContentPane(conteneur);
 		setVisible(true);

@@ -54,12 +54,14 @@ public class FenetreDialog extends JFrame implements ActionListener{
 		if (e.getActionCommand().equals("generateEvent")){
 			String mess = corps.getText();
 			
-			bavard.generatePapotageEvent(null, mess); //envoie le mess au concierge
+			bavard.generatePapotageEvent(bavard.getNom(), mess); //envoie le mess au concierge
 			
+			/*
 			JLabel l = new JLabel(mess);  //affiche le mess dans la fenetre
 			conteneur.add(l, BorderLayout.SOUTH);
 			setContentPane(conteneur);
 			setVisible(true);
+			*/
 		}
 		
 		if (e.getActionCommand().equals("signOut")) {
@@ -75,7 +77,7 @@ public class FenetreDialog extends JFrame implements ActionListener{
 	
 	
 	public void afficheMess(PapotageEvent mess) {
-		JLabel l = new JLabel(mess.getCorps());  //affiche le mess dans la fenetre
+		JLabel l = new JLabel(mess.getSujet()+" : "+mess.getCorps());  //affiche le mess dans la fenetre
 		conteneur.add(l, BorderLayout.SOUTH);
 		setContentPane(conteneur);
 		setVisible(true);
