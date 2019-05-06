@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 
 public class Concierge implements PapotageListener{
+	private FenetreConcierge conciergeGUI;
 	private ArrayList<PapotageListener> ecouteurs = new  ArrayList<PapotageListener>(); // Tous les ecouteurs du concierge
 	
 
@@ -23,13 +24,27 @@ public class Concierge implements PapotageListener{
 		
 		for (PapotageListener elem:ecouteurs) {
 			elem.newPapotage(mess);
+			conciergeGUI.afficheMess(mess);
+						
 		}
+
 	}
 
 	@Override
 	public void newPapotage(PapotageEvent mess) {
 		transmitPapotageEvent(mess);
 		
+	}
+	
+	
+	
+
+	public FenetreConcierge getConciergeGUI() {
+		return conciergeGUI;
+	}
+
+	public void setConciergeGUI(FenetreConcierge conciergeGUI) {
+		this.conciergeGUI = conciergeGUI;
 	}
 	
 

@@ -11,17 +11,26 @@ public class FenetreConnexion extends JFrame implements ActionListener {
 	private JTextField corps = new JTextField("",10);
 	private JPanel conteneur = new JPanel();
 	
+	public static Gestionnaire gestionnaire = null;
+	
+
 	public FenetreConnexion() {
+		super();
+		
 		/*
 		JFrame f = new JFrame();
 		String nom = JOptionPane.showInputDialog(f,"Nom du bavard", "Connexion", JOptionPane.QUESTION_MESSAGE); //saisie information
 		setNomBavard(nom);
 		
 		setVisible(true);
-		*/
 		
 		
-		super();
+		if (gestionnaire == null) {
+			gestionnaire = new Gestionnaire();
+		}*/
+		
+		
+		
 		setTitle("Connexion");
 		setSize(250, 100);
 		setLocationRelativeTo(null);
@@ -43,20 +52,28 @@ public class FenetreConnexion extends JFrame implements ActionListener {
 		setVisible(true);
 		
 		
+		
 	}
 	
 	
 	public void actionPerformed(ActionEvent e) {
 
 			if (e.getActionCommand().equals("signIn")){
-				FenetreDialog fd = new FenetreDialog();
 				
-				Gestionnaire g = new Gestionnaire();
+				
+				//Gestionnaire g = gestionnaire;
 				String nomBavard = corps.getText();
-				Bavard b1 = g.createNewBavard(nomBavard); // cree un nouveau bavard ayant le nom rentré dans la fenetre
-				g.connectBavard(b1); // connecte le bavard b1
+				Bavard b = null;
+				System.out.println("okFenetreConnection1");
+				b = gestionnaire.createNewBavard(nomBavard); // cree un nouveau bavard ayant le nom rentré dans la fenetre
+				gestionnaire.connectBavard(b); // connecte le bavard b1
 				
-				fd.setBavard(b1);
+
+				FenetreDialog fd = new FenetreDialog();
+				b.setFenetreDialog(fd);
+				fd.setBavard(b);
+				
+
 			}
 			
 			if (e.getActionCommand().equals("close")) {
@@ -64,6 +81,9 @@ public class FenetreConnexion extends JFrame implements ActionListener {
 				this.dispose(); //ferme la fenetre
 			}
 		}
+
+
+
 	
 
 	

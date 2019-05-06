@@ -6,7 +6,12 @@ import java.util.ArrayList;
 public class Gestionnaire {
 	private Concierge concierge = new Concierge();
 	private ArrayList<Bavard> bavards = new ArrayList<Bavard>();
-	
+
+
+	public Concierge getConcierge() {
+		return concierge;
+	}
+
 	public void addBavard(Bavard b) {
 		bavards.add(b);
 	}
@@ -17,9 +22,11 @@ public class Gestionnaire {
 
 // cree un nouveau bavard (avec comme listener le concierge), et l'ajoute a la liste des bavards
 	public Bavard createNewBavard(String nom) {
+		System.out.println("okCreateNewBavard1");
 		Bavard bavard = new Bavard(nom);
-		bavard.addPapotageListener(concierge);
+		bavard.addPapotageListener(concierge);	
 		addBavard(bavard);
+
 		return bavard;
 		
 	}

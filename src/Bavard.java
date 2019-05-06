@@ -56,7 +56,7 @@ public class Bavard implements PapotageListener{
 
 	@Override
 	public void newPapotage(PapotageEvent mess) {
-		// TODO Auto-generated method stub
+		fenetreDialog.afficheMess(mess);
 		
 	}
 
