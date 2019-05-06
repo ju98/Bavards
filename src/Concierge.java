@@ -23,23 +23,20 @@ public class Concierge implements PapotageListener{
 	public void transmitPapotageEvent(PapotageEvent mess) {
 		
 		for (PapotageListener elem:ecouteurs) {
-			elem.newPapotage(mess);
-			
-						
+			elem.newPapotage(mess);			
 		}
+		
 		conciergeGUI.afficheMess(mess);
-
 	}
 
 	@Override
 	public void newPapotage(PapotageEvent mess) {
 		transmitPapotageEvent(mess);
-		
 	}
 	
 	
 	
-
+//getters et setters
 	public FenetreConcierge getConciergeGUI() {
 		return conciergeGUI;
 	}

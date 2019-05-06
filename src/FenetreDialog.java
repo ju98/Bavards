@@ -7,22 +7,29 @@ public class FenetreDialog extends JFrame implements ActionListener{
 	private JButton boutonSend = new JButton("Envoyer");
 	private JButton boutonDeconn = new JButton("Deconnexion");
 	private JButton boutonNewb = new JButton("Nouveau bavard");
-	private JLabel label = new JLabel("Message :");
+	
 	private JTextField corps = new JTextField("",80);
+	
+	//private JLabel label = new JLabel("Message :");
+	private JLabel discussion = new JLabel("<html><h3>Message :</h3></html>");
+	
 	private JPanel conteneur = new JPanel();
 	
 	private Bavard bavard;
-
+	private String fil_discussion = "";
 
 
 	
 	public FenetreDialog() {
 		super();
-		setTitle("Mon dialogue");
+		
+	// definit la taille et la position de la fenetre
+		//setTitle("Fenetre dialogue");
 		setSize(1000, 400);
 		setLocationRelativeTo(null);
-		
-		boutonSend.addActionListener(this);  // ajout du bouton comme ecouteur
+	
+	// ajout des differents boutons comme ecouteur, avec des actions differentes
+		boutonSend.addActionListener(this);
 		boutonSend.setActionCommand("generateEvent");
 		
 		boutonDeconn.addActionListener(this);
@@ -31,44 +38,46 @@ public class FenetreDialog extends JFrame implements ActionListener{
 		boutonNewb.addActionListener(this);
 		boutonNewb.setActionCommand("newBavard");
 		
-		conteneur.add(label, BorderLayout.SOUTH);
-		conteneur.add(corps, BorderLayout.SOUTH);
+		
+		conteneur.add(discussion);
+		//conteneur.add(label, BorderLayout.SOUTH);
+		conteneur.add(corps, BorderLayout.AFTER_LAST_LINE);
 		conteneur.add(boutonSend, BorderLayout.SOUTH);
 		conteneur.add(boutonDeconn, BorderLayout.SOUTH);
 		conteneur.add(boutonNewb, BorderLayout.SOUTH);
+		
 		setContentPane(conteneur);
 		
-
-
-		setVisible(true);
-				
-
+		//setVisible(true);
+		
 	}
 	
 	
 	public void actionPerformed(ActionEvent e) {
 	//	Object source = e.getSource();
 		
-		
+	//si on appui sur le bouton envoyer
 	//	if (source == boutonSend) {
-		if (e.getActionCommand().equals("generateEvent")){
-			String mess = corps.getText();
+		if (e.getActionCommand().equals("generateEvent")){ 
 			
+			String mess = corps.getText();
 			bavard.generatePapotageEvent(bavard.getNom(), mess); //envoie le mess au concierge
 			
-			/*
-			JLabel l = new JLabel(mess);  //affiche le mess dans la fenetre
+			/* //affiche le mess dans la fenetre
+			JLabel l = new JLabel(mess);  
 			conteneur.add(l, BorderLayout.SOUTH);
 			setContentPane(conteneur);
 			setVisible(true);
 			*/
 		}
 		
+		//si on appui sur le bouton deconnexion
 		if (e.getActionCommand().equals("signOut")) {
-			bavard.setConnecte(false); //deconnecte le bavard
+			FenetreConnexion.gestionnaire.deconnectBavard(bavard); //deconnecte le bavard
 			this.dispose(); //ferme la fenetre
 		}
 		
+		//si on appui sur le bouton nouveau bavard
 		if (e.getActionCommand().equals("newBavard")) {
 			new FenetreConnexion();
 			
@@ -77,12 +86,19 @@ public class FenetreDialog extends JFrame implements ActionListener{
 	
 	
 	public void afficheMess(PapotageEvent mess) {
+		/*
 		JLabel l = new JLabel(mess.getSujet()+" : "+mess.getCorps());  //affiche le mess dans la fenetre
-		conteneur.add(l, BorderLayout.SOUTH);
+		conteneur.add(l, BorderLayout.NORTH);
 		setContentPane(conteneur);
 		setVisible(true);
+		*/
+		
+		fil_discussion = fil_discussion + "<p>" + mess.getSujet()+" : "+mess.getCorps()+"</p>";
+		discussion.setText("<html>" + fil_discussion + "<br><h3>Nouveau message :</h3></html>");
 	}
 
+	
+	
 // getters et setters
 	public Bavard getBavard() {
 		return bavard;

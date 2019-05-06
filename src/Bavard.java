@@ -16,6 +16,14 @@ public class Bavard implements PapotageListener{
 	
 	
 // getters et setters	
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+	
 	public boolean isConnecte() {
 		return connecte;
 	}
@@ -53,6 +61,7 @@ public class Bavard implements PapotageListener{
 			elem.newPapotage(mess);
 		}
 	}
+	
 
 	@Override
 	public void newPapotage(PapotageEvent mess) {
@@ -61,14 +70,7 @@ public class Bavard implements PapotageListener{
 	}
 
 
-	public String getNom() {
-		return nom;
-	}
 
-
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
 
 
 }

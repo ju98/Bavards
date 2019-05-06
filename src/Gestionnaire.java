@@ -1,4 +1,5 @@
-/* Gere les bavards */
+/* Fait le lien entre les bavards et le concierge
+ * gère les connexions et déconnexion des bavards */
 
 import java.util.ArrayList;
 
@@ -20,16 +21,16 @@ public class Gestionnaire {
 		bavards.remove(b);
 	}
 
-// cree un nouveau bavard (avec comme listener le concierge), et l'ajoute a la liste des bavards
+// cree un nouveau bavard (avec comme listener le concierge), et l'ajoute a la liste des bavards du gestionnaire
 	public Bavard createNewBavard(String nom) {
 		Bavard bavard = new Bavard(nom);
 		bavard.addPapotageListener(concierge);	
 		addBavard(bavard);
 
-		return bavard;
-		
+		return bavard;	
 	}
 
+	
 // connecte un bavard, et l'ajoute aux ecouteurs du concierge afin de recevoir les messages
 	public void connectBavard(Bavard b) {
 		b.setConnecte(true);
