@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 public class FenetreDialog extends JFrame implements ActionListener{
 	private JButton boutonSend = new JButton("Envoyer");
 	private JButton boutonDeconn = new JButton("Deconnexion");
-	private JButton boutonNewb = new JButton("Nouveau bavard");
+
 	
 	private JTextField corps = new JTextField("",80);
 	
@@ -35,16 +35,12 @@ public class FenetreDialog extends JFrame implements ActionListener{
 		boutonDeconn.addActionListener(this);
 		boutonDeconn.setActionCommand("signOut");
 		
-		boutonNewb.addActionListener(this);
-		boutonNewb.setActionCommand("newBavard");
-		
 		
 		conteneur.add(discussion);
 		//conteneur.add(label, BorderLayout.SOUTH);
 		conteneur.add(corps, BorderLayout.AFTER_LAST_LINE);
 		conteneur.add(boutonSend, BorderLayout.SOUTH);
 		conteneur.add(boutonDeconn, BorderLayout.SOUTH);
-		conteneur.add(boutonNewb, BorderLayout.SOUTH);
 		
 		setContentPane(conteneur);
 		
@@ -75,12 +71,6 @@ public class FenetreDialog extends JFrame implements ActionListener{
 		if (e.getActionCommand().equals("signOut")) {
 			FenetreConnexion.gestionnaire.deconnectBavard(bavard); //deconnecte le bavard
 			this.dispose(); //ferme la fenetre
-		}
-		
-		//si on appui sur le bouton nouveau bavard
-		if (e.getActionCommand().equals("newBavard")) {
-			new FenetreConnexion();
-			
 		}
 	}
 	

@@ -9,6 +9,10 @@ public class Gestionnaire {
 	private ArrayList<Bavard> bavards = new ArrayList<Bavard>();
 
 
+	public ArrayList<Bavard> getBavards() {
+		return bavards;
+	}
+
 	public Concierge getConcierge() {
 		return concierge;
 	}

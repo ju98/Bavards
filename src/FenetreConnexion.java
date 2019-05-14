@@ -56,7 +56,9 @@ public class FenetreConnexion extends JFrame implements ActionListener {
 				String nomBavard = corps.getText();
 				Bavard b = gestionnaire.createNewBavard(nomBavard); // cree un nouveau bavard ayant le nom rentré dans la fenetre
 				gestionnaire.connectBavard(b); // connecte le bavard b1
-
+				
+				
+				this.dispose(); //ferme la fenetre de connexion
 
 				FenetreDialog fd = new FenetreDialog();
 				b.setFenetreDialog(fd);

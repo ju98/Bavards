@@ -6,10 +6,11 @@ public class Main {
 		Gestionnaire g = new Gestionnaire();
 		FenetreConnexion.gestionnaire = g;
 		
-		new FenetreConnexion();
+		//new FenetreConnexion();
 
 		
 		FenetreConcierge fc = new FenetreConcierge();
+		fc.setGestionnaire(g);
 		fc.setConcierge(g.getConcierge());
 		g.getConcierge().setConciergeGUI(fc);
 		

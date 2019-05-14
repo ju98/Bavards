@@ -1,13 +1,26 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
 
 
-public class FenetreConcierge extends JFrame  {
+public class FenetreConcierge extends JFrame implements ActionListener {
 	private Concierge concierge;
-	private JPanel conteneur = new JPanel();
-	private JLabel label = new JLabel("<html><h1>Discussion :</h1></html>");
+	private Gestionnaire gestionnaire;
+	
+	private JPanel conteneur1 = new JPanel();
+	private JPanel conteneur2 = new JPanel();
+	
+	private JLabel labelDiscussion = new JLabel("<html><h1>Discussion :</h1></html>");
 	private String discussion="<h1>Discussion :</h1>";
+	
+	
+	//private String bavardsConnectes = "<h2>Bavards connectés</h2>";
+	private JLabel labelConnectes = new JLabel("<h2>Bavards connectés</h2>");
+	
+	private JButton boutonNewb = new JButton("Nouveau bavard");
 	
 	
 	
@@ -19,11 +32,29 @@ public class FenetreConcierge extends JFrame  {
 		setSize(400, 900);
 		setLocation(1450, 50);
 		
-		conteneur.add(label, BorderLayout.SOUTH);
-		setContentPane(conteneur);
-
+		boutonNewb.addActionListener(this);
+		boutonNewb.setActionCommand("newBavard");
+		
+		this.getContentPane().setLayout(new BoxLayout(this.getContentPane(),BoxLayout.PAGE_AXIS));
+		
+		conteneur1.add(labelDiscussion, BorderLayout.SOUTH);
+		this.getContentPane().add(conteneur1);
+		
+		conteneur2.add(labelConnectes);
+		conteneur2.add(boutonNewb, BorderLayout.SOUTH);
+		this.getContentPane().add(conteneur2);
+		
 		setVisible(true);
 		
+	}
+	
+	
+	
+	public void actionPerformed(ActionEvent e) {
+		//si on appui sur le bouton nouveau bavard
+		if (e.getActionCommand().equals("newBavard")) {
+			new FenetreConnexion();
+		}
 	}
 	
 	
@@ -36,9 +67,18 @@ public class FenetreConcierge extends JFrame  {
 		*/
 		
 		discussion = discussion + "<p>" + mess.getSujet()+" : "+mess.getCorps()+"</p>";
-		label.setText("<html>" + discussion + "</html>");
+		labelDiscussion.setText("<html>" + discussion + "</html>");
 	}
 	
+	public void afficheConnectes() {
+		String a ="<h2>Bavards connectés</h2>";
+		for (Bavard bavard : gestionnaire.getBavards()) {
+			if (bavard.isConnecte()==true) {
+				a = a + "<p>" + bavard.getNom() + "</p>";
+			}
+		}
+		labelConnectes.setText("<html>" + a + "</html>");
+	}
 
 
 //getters et setters
@@ -50,4 +90,16 @@ public class FenetreConcierge extends JFrame  {
 	public void setConcierge(Concierge concierge) {
 		this.concierge = concierge;
 	}
+	
+	public Gestionnaire getGestionnaire() {
+		return gestionnaire;
+	}
+
+
+
+	public void setGestionnaire(Gestionnaire gestionnaire) {
+		this.gestionnaire = gestionnaire;
+	}
+
+
 }

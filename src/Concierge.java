@@ -27,7 +27,10 @@ public class Concierge implements PapotageListener{
 		}
 		
 		conciergeGUI.afficheMess(mess);
+		
+		conciergeGUI.afficheConnectes();
 	}
+
 
 	@Override
 	public void newPapotage(PapotageEvent mess) {
@@ -44,6 +47,15 @@ public class Concierge implements PapotageListener{
 	public void setConciergeGUI(FenetreConcierge conciergeGUI) {
 		this.conciergeGUI = conciergeGUI;
 	}
+
+	public ArrayList<PapotageListener> getEcouteurs() {
+		return ecouteurs;
+	}
+
+	public void setEcouteurs(ArrayList<PapotageListener> ecouteurs) {
+		this.ecouteurs = ecouteurs;
+	}
+	
 	
 
 }
