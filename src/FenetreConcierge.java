@@ -1,7 +1,6 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.*;
 
 
@@ -15,9 +14,7 @@ public class FenetreConcierge extends JFrame implements ActionListener {
 	
 	private JLabel labelDiscussion = new JLabel("<html><h1>Discussion :</h1></html>");
 	private String discussion="<h1>Discussion :</h1>";
-	
-	
-	//private String bavardsConnectes = "<h2>Bavards connectés</h2>";
+
 	private JLabel labelConnectes = new JLabel("<h2>Bavards connectés</h2>");
 	
 	private JButton boutonNewb = new JButton("Nouveau bavard");
@@ -59,16 +56,10 @@ public class FenetreConcierge extends JFrame implements ActionListener {
 	
 	
 	public void afficheMess(PapotageEvent mess) {
-		/*
-		JLabel l = new JLabel("<html><h3>" + mess.getSujet()+"</h3><p>"+mess.getCorps()+"</p></html>");
-		conteneur.add(l, BorderLayout.SOUTH);
-		setContentPane(conteneur);
-		setVisible(true);
-		*/
-		
 		discussion = discussion + "<p>" + mess.getSujet()+" : "+mess.getCorps()+"</p>";
 		labelDiscussion.setText("<html>" + discussion + "</html>");
 	}
+	
 	
 	public void afficheConnectes() {
 		String a ="<h2>Bavards connectés</h2>";

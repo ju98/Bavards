@@ -19,14 +19,6 @@ public class FenetreConnexion extends JFrame implements ActionListener {
 	public FenetreConnexion() {
 		super();
 		
-		/*
-		JFrame f = new JFrame();
-		String nom = JOptionPane.showInputDialog(f,"Nom du bavard", "Connexion", JOptionPane.QUESTION_MESSAGE); //saisie information
-		setNomBavard(nom);
-		
-		setVisible(true);
-		*/
-		
 		setTitle("Connexion");
 		setSize(250, 100);
 		setLocationRelativeTo(null);
@@ -72,11 +64,6 @@ public class FenetreConnexion extends JFrame implements ActionListener {
 				this.dispose(); //ferme la fenetre
 			}
 		}
-
-
-
-	
-
 	
 	
 
